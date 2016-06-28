@@ -88,7 +88,7 @@
         }
         else {
           var user = MP.api.people({
-              where: 'properties["' + field + '"] == "' + value + '"'
+              where: ' string(properties["' + field + '"]) == "' + value + '"'
           }).done(function(results) {
               var results = results.values();
               if (_.isEmpty(results.results)) {
