@@ -1,15 +1,102 @@
 <!DOCTYPE html>
+<!-- quick port of the user profile page of Mixpanel explore. Minor modifications made to existing JS and css files... -->
+
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
-    <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
-  </head>
-  <body class="mixpanel-platform-body">
-    <h1>Hello, World!</h1>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
+        <style>
+            .mixpanel-platform-body {
+                padding: 0px;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="media/css/user.css">
+        <link rel="stylesheet" type="text/css" href="media/css/proplist.css">
+        <link rel="stylesheet" type="text/css" href="media/css/user_stream.css">
+
+
+        <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+
+        <script src="media/js/date.js"></script>
+
+        <script src="media/js/underscore.js"></script>
+        <script src="media/js/underscore.string.js"></script>
+        <script src="media/js/underscore.mixins.js"></script>
+        <script src="media/js/utility.js"></script>
+
+        <script src="media/js/property_formatter.js"></script>
+        <script src="media/js/widgets/widget.js"></script>
+        <script src="media/js/widgets/user_stream.js"></script>
+        <script src="media/js/widgets/proplist.js"></script>
+    </head>
+    
+    <body class="mixpanel-platform-body">
+        <div class="left_column">
+            <div class="stream_header">Activity Feed</div>
+            <div class="stream_container"></div>
+            <div id="no_data_container">
+                <h3>No activity</h3>
+                <p>We have not seen any activity in the past 90 days.</p>
+            </div>
+        </div>
+        <div class="right_column">
+            <div class="floating_cell">
+                <div class="user_properties">
+                    <table></table>
+                </div>
+            </div>
+        </div>
+    
+
     <script>
-      // Run queries and display results here
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2]);
+        }
+
+        _.namespace("mp.report.globals", function() {
+            return {
+                utc_offset: -1 * new Date().getTimezoneOffset()
+            }
+        });
+
+        var field = getParameterByName("field");
+        var value = getParameterByName("value");
+
+        /* Validation to check if email is blank. If blank, display "no user record found" */
+        if(User_ID.trim() == ""){
+          $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
+        }
+        else {
+          debugger
+          var user = MP.api.people({
+              where: 'properties["' + field + '"] == ' + value
+          }).done(function(results) {
+              var results = results.values();
+              if (_.isEmpty(results.results)) {
+                  $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
+              } else {
+                  var record = results.results[0];
+  
+                  var property_list = new mp.engage.widgets.PropertyList().create(
+                      $(".user_properties table"),
+                      {
+                          editable: false,
+                          initial_values: record.$properties
+                      }
+                  );
+  
+                  var user_stream = new mp.engage.widgets.UserStream().create($(".stream_container"));
+                  user_stream.set_distinct_ids([record.$distinct_id]);
+              }
+          });
+        }
     </script>
-  </body>
+    </body>
 </html>
