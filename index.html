@@ -70,7 +70,7 @@
         var value = getParameterByName("value");
 
         /* Validation to check if email is blank. If blank, display "no user record found" */
-        if(User_ID.trim() == ""){
+        if(value.trim() == ""){
           $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
         }
         else {
