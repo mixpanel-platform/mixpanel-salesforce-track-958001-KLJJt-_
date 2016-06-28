@@ -81,7 +81,7 @@
 
         var field = getQueryParam("field");
         var value = getQueryParam("value");
-
+        debugger
         /* Validation to check if email is blank. If blank, display "no user record found" */
         if(value.trim() == ""){
           $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
@@ -95,7 +95,6 @@
                   $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
               } else {
                   var record = results.results[0];
-  
                   var property_list = new mp.engage.widgets.PropertyList().create(
                       $(".user_properties table"),
                       {
@@ -103,7 +102,6 @@
                           initial_values: record.$properties
                       }
                   );
-  
                   var user_stream = new mp.engage.widgets.UserStream().create($(".stream_container"));
                   user_stream.set_distinct_ids([record.$distinct_id]);
               }
