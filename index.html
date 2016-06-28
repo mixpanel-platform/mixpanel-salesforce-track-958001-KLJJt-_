@@ -74,7 +74,6 @@
           $("body").html('<h1 style="text-align: center; padding: 30px 0; font-size: 36px;">No user record found.</h1>');
         }
         else {
-          debugger
           var user = MP.api.people({
               where: 'properties["' + field + '"] == ' + value
           }).done(function(results) {
