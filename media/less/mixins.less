@@ -1,0 +1,549 @@
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Vertical align
+.vertical-align() {
+  position: relative;
+  top: 50%;
+  .transform(translateY(-50%));
+}
+
+// Horizontal align
+.horizontal-align() {
+  position: relative;
+  left: 50%;
+  .transform(translateX(-50%));
+}
+
+// Hide default text in an element that should show its background.
+.hide-text() {
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Webkit-style focus
+// ------------------
+.tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// IE7 inline-block
+// ----------------
+.ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+.ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+// Placeholder text
+// -------------------------
+.placeholder(@color: @placeholderText, @opacity: 1) {
+  &:-moz-placeholder {
+    color: @color;
+    opacity: @opacity;
+  }
+  &::-moz-placeholder {
+    color: @color;
+    opacity: @opacity;
+  }
+  &::-webkit-input-placeholder {
+    color: @color;
+    opacity: @opacity;
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+    opacity: @opacity;
+  }
+}
+
+// Requires inline-block or block for proper styling
+.ellipsis() {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+// FONTS
+// --------------------------------------------------
+
+#font {
+  #family {
+    .serif() {
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+    .sans-serif() {
+      font-family: proxima-nova, sans-serif;
+    }
+    .header() {
+      font-family: proxima-nova, sans-serif;
+      letter-spacing: -0.03em;
+    }
+    .monospace() {
+      font-family: Menlo, Monaco, "Courier New", monospace;
+    }
+    .helvetica() {
+        font-family: "helvetica neue", helvetica;
+    }
+  }
+  .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+  .sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .sans-serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+  .monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .monospace;
+    #font > .shorthand(@size, @weight, @lineHeight);
+  }
+}
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+.border-radius(@radius: 5px) {
+  border-radius: @radius;
+}
+
+.border-radius-set(@rtl: 5px, @rtr: 5px, @rbl: 5px, @rbr: 5px) {
+  border-radius: @rtl @rtr @rbl @rbr;
+}
+
+.border-top-left-radius(@radius: 5px) {
+  border-top-left-radius: @radius;
+}
+
+.border-top-right-radius(@radius: 5px) {
+  border-top-right-radius: @radius;
+}
+
+.border-bottom-left-radius(@radius: 5px) {
+  border-bottom-left-radius: @radius;
+}
+
+.border-bottom-right-radius(@radius: 5px) {
+  border-bottom-right-radius: @radius;
+}
+
+.box-shadow(@shadow) {
+  box-shadow: @shadow;
+}
+.box-shadow(@shadow1, @shadow2) {
+  box-shadow: @shadow1, @shadow2;
+}
+.box-shadow(@shadow1, @shadow2, @shadow3) {
+  box-shadow: @shadow1, @shadow2, @shadow3;
+}
+.box-shadow(@shadow1, @shadow2, @shadow3, @shadow4) {
+  box-shadow: @shadow1, @shadow2, @shadow3, @shadow4;
+}
+.box-shadow(@shadow1, @shadow2, @shadow3, @shadow4, @shadow5) {
+  box-shadow: @shadow1, @shadow2, @shadow3, @shadow4, @shadow5;
+}
+.box-shadow(@shadow1, @shadow2, @shadow3, @shadow4, @shadow5, @shadow6) {
+  box-shadow: @shadow1, @shadow2, @shadow3, @shadow4, @shadow5, @shadow6;
+}
+
+.transition(@transition) {
+    transition: @transition;
+}
+
+.transition(@transition1, @transition2) {
+    transition: @transition1, @transition2;
+}
+
+.transition(@transition1, @transition2, @transition3) {
+    transition: @transition1, @transition2, @transition3;
+}
+
+.transition(@transition1, @transition2, @transition3, @transition4) {
+    transition: @transition1, @transition2, @transition4;
+}
+
+.transition(@transition1, @transition2, @transition3, @transition4, @transition5) {
+    transition: @transition1, @transition2, @transition4, @transition5;
+}
+
+.transition-delay(@t: 0s) {
+    transition-delay: @t;
+}
+
+.transition-transform(@time) {
+    transition: transform @time;
+}
+
+.transition-transform-and(@time, @transition) {
+    transition: transform @time, @transition;
+}
+
+.animation(@animation) {
+    animation: @animation;
+}
+
+.animation(@animation1, @animation2) {
+    animation: @animation1, @animation2;
+}
+
+.rotate(@degrees) {
+    transform: rotate(@degrees);
+}
+.scale(@ratio) {
+    transform: scale(@ratio);
+}
+.translate(@x: 0, @y: 0) {
+    transform: translate(@x, @y);
+}
+.skew(@x: 0, @y: 0) {
+    transform: skew(@x, @y);
+}
+.translate3d(@x: 0, @y: 0, @z: 0) {
+    transform: translate3d(@x, @y, @z);
+}
+.transform-origin(@x: 0, @y: 0) {
+    transform-origin: @x @y;
+}
+.transform(@rule) {
+    transform: @rule;
+}
+.transform-style(@style) {
+    transform-style: @style;
+}
+
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+.background-clip(@clip) {
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
+}
+
+.background-size(@size){
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+          background-size: @size;
+}
+
+
+.box-sizing(@boxmodel) {
+  box-sizing: @boxmodel;
+}
+
+// For selecting text on the page
+.user-select(@select) {
+  user-select: @select;
+}
+
+// Resize anything
+.resizable(@direction: both) {
+  resize: @direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+.opacity(@opacity: 100) {
+  opacity: @opacity / 100;
+   filter: ~"alpha(opacity=@{opacity})";
+}
+
+// BACKGROUNDS
+// --------------------------------------------------
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+#translucent {
+  .background(@color: @white, @alpha: 1) {
+    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+  }
+  .border(@color: @white, @alpha: 1) {
+    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    .background-clip(padding-box);
+  }
+}
+
+// Gradient Bar Colors for buttons and alerts
+.gradientBar(@primaryColor, @secondaryColor) {
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+#gradient {
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: mix(@startColor, @endColor, 60%);
+    background-image: linear-gradient(to right, @startColor, @endColor);
+  }
+  .vertical(@startColor: #555, @endColor: #333, @startPercent: 0%, @endPercent: 0%) {
+    background-color: mix(@startColor, @endColor, 60%);
+    background-image: linear-gradient(@startColor, @endColor);
+  }
+  .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: linear-gradient(@deg, @startColor, @endColor); // The standard
+  }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+    background-color: mix(@midColor, @endColor, 80%);
+    background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+  .radial(@innerColor: #555, @outerColor: #333)  {
+    background-color: @outerColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+    background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+    background-repeat: no-repeat;
+  }
+  .radial-inner(@innerColor: #555, @outerColor: #333) {
+    background-color: @outerColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+    background-image: -webkit-radial-gradient(circle closest-side, @innerColor, @outerColor);
+    background-image: -moz-radial-gradient(circle closest-side, @innerColor, @outerColor);
+    background-image: -ms-radial-gradient(circle closest-side, @innerColor, @outerColor);
+    background-image: -o-radial-gradient(circle closest-side, @innerColor, @outerColor);
+    background-repeat: no-repeat;
+  }
+  .striped(@color, @angle: -45deg) {
+    background-color: @color;
+    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
+  .radial-custom(@params: #000) {
+    background-image: -webkit-radial-gradient(@params);
+    background-image: -moz-radial-gradient(@params);
+    background-image: radial-gradient(@params);
+  }
+  .linear-custom(@params: #000) {
+    background-image: linear-gradient(@params);
+  }
+}
+
+// Reset filters for IE
+.reset-filter() {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+// Popover arrows
+// -------------------------
+// For tipsies and popovers
+#popoverArrow {
+  .top(@arrowWidth: 5px, @color: @black) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid @color;
+  }
+  .left(@arrowWidth: 5px, @color: @black) {
+    top: 50%;
+    right: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid @color;
+  }
+  .bottom(@arrowWidth: 5px, @color: @black) {
+    top: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid @color;
+  }
+  .right(@arrowWidth: 5px, @color: @black) {
+    top: 50%;
+    left: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid @color;
+  }
+}
+
+// Pseudoclass arrows
+// --------------------
+// For tooltips etc that want to use :before, :after
+#pseudoclassArrow {
+    .top(@arrowWidth, @arrowHeight, @color) {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border: @arrowWidth solid transparent;
+        border-bottom: @arrowHeight solid @color;
+    }
+    .bottom(@arrowWidth, @arrowHeight, @color) {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border: @arrowWidth solid transparent;
+        border-top: @arrowHeight solid @color;
+    }
+    .left(@arrowWidth, @arrowHeight, @color) {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border: @arrowWidth solid transparent;
+        border-right: @arrowHeight solid @color;
+    }
+    .right(@arrowWidth, @arrowHeight, @color) {
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border: @arrowWidth solid transparent;
+        border-left: @arrowHeight solid @color;
+    }
+    .bottomPositioned(@arrowWidth, @arrowHeight, @color) {
+        #pseudoclassArrow.bottom(@arrowWidth, @arrowHeight, @color);
+        bottom: 1px - (2 * @arrowHeight);
+        left: 50%;
+        margin-left: -@arrowWidth;
+    }
+}
+
+// Other mixins
+// ------------
+
+.inactive_overlay() {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0.5;
+    background-color: #fff;
+}
+
+.alphabet_colors(@property: background-color) {
+    &.color_A {
+        @{property}: #33bcbd;
+    }
+    &.color_B {
+        @{property}: #2da9aa;
+    }
+    &.color_C {
+        @{property}: #289697;
+    }
+    &.color_D {
+        @{property}: #238384;
+    }
+    &.color_E {
+        @{property}: #64ade8;
+    }
+    &.color_F {
+        @{property}: #5a9bd1;
+    }
+    &.color_G {
+        @{property}: #508bba;
+    }
+    &.color_H {
+        @{property}: #4679a2;
+    }
+    &.color_I {
+        @{property}: #3c688b;
+    }
+    &.color_J {
+        @{property}: #a28ccb;
+    }
+    &.color_K {
+        @{property}: #917db6;
+    }
+    &.color_L {
+        @{property}: #826fa2;
+    }
+    &.color_M {
+        @{property}: #71618d;
+    }
+    &.color_N {
+        @{property}: #61547a;
+    }
+    &.color_O {
+        @{property}: #d97b7f;
+    }
+    &.color_P {
+        @{property}: #c36e72;
+    }
+    &.color_Q {
+        @{property}: #ad6366;
+    }
+    &.color_R {
+        @{property}: #985559;
+    }
+    &.color_S {
+        @{property}: #e8bc65;
+    }
+    &.color_T {
+        @{property}: #d0a95b;
+    }
+    &.color_U {
+        @{property}: #b99651;
+    }
+    &.color_V {
+        @{property}: #a28347;
+    }
+    &.color_W {
+        @{property}: #f6893b;
+    }
+    &.color_X {
+        @{property}: #dd7b35;
+    }
+    &.color_Y {
+        @{property}: #c46e30;
+    }
+    &.color_Z {
+        // use default
+    }
+    @{property}: #1e7171;
+}
+
+// Used to hide elements using webfonts until the fonts are loaded.
+.hide-fout() {
+  .wf-loading & {
+    visibility: hidden;
+  }
+}

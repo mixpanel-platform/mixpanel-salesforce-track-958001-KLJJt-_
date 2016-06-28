@@ -1,0 +1,220 @@
+.mp_editable_property_list a.email_property_link,
+.user_defined_property_list a.email_property_link,
+.mp_editable_property_list a.url_property_link,
+.user_defined_property_list a.url_property_link {
+  color: #749ED8;
+}
+.mp_editable_property_list,
+.user_defined_property_list {
+  table-layout: fixed;
+  font-size: 13px;
+  font-family: "helvetica neue", helvetica;
+}
+.mp_editable_property_list tr td,
+.user_defined_property_list tr td {
+  background: #fff;
+  font-size: 12px;
+  border-top: 1px solid #dedee6;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.mp_editable_property_list tr:first-child td,
+.user_defined_property_list tr:first-child td {
+  border-top: none;
+}
+.mp_editable_property_list tr:hover td,
+.user_defined_property_list tr:hover td {
+  background: #F5F6F9;
+}
+.mp_editable_property_list tr.editing td,
+.user_defined_property_list tr.editing td {
+  background: #8EBAEE;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-top: 1px solid #7CA7DC;
+}
+.mp_editable_property_list tr.editing + tr td,
+.user_defined_property_list tr.editing + tr td {
+  border-top: 1px solid #7CA7DC;
+}
+.mp_editable_property_list tr td.name,
+.user_defined_property_list tr td.name {
+  color: #777D93;
+  font-weight: 500;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.mp_editable_property_list tr td.name .name_contents,
+.user_defined_property_list tr td.name .name_contents {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 88px;
+  padding: 0px 1px;
+}
+.mp_editable_property_list tr td.value .value_contents,
+.user_defined_property_list tr td.value .value_contents {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #9092A4;
+  width: 190px;
+  padding: 0px 1px;
+}
+.mp_editable_property_list tr td.controls .space_wrapper,
+.user_defined_property_list tr td.controls .space_wrapper {
+  width: 54px;
+  text-align: right;
+}
+.mp_editable_property_list tr td.controls a,
+.user_defined_property_list tr td.controls a {
+  display: block;
+  float: right;
+  position: relative;
+  margin-right: 10px;
+}
+.mp_editable_property_list tr td.controls a:hover .tooltip,
+.user_defined_property_list tr td.controls a:hover .tooltip {
+  display: block;
+}
+.mp_editable_property_list tr td.controls a.edit,
+.user_defined_property_list tr td.controls a.edit {
+  margin-top: 3px;
+  height: 13px;
+  width: 12px;
+  background: url(/site_media/images/engage/edit_icon_sprite.png);
+  background-position: right;
+  visibility: hidden;
+}
+.mp_editable_property_list tr td.controls a.edit:hover,
+.user_defined_property_list tr td.controls a.edit:hover {
+  background-position: left;
+}
+.mp_editable_property_list tr td.controls a.delete,
+.user_defined_property_list tr td.controls a.delete {
+  height: 16px;
+  width: 12px;
+  background: url(/site_media/images/engage/trash_icon.png);
+  visibility: hidden;
+}
+.mp_editable_property_list tr td.controls a.delete:hover,
+.user_defined_property_list tr td.controls a.delete:hover {
+  background-position: 0px -18px;
+}
+.mp_editable_property_list tr:hover td.controls a.edit,
+.user_defined_property_list tr:hover td.controls a.edit,
+.mp_editable_property_list tr:hover td.controls a.delete,
+.user_defined_property_list tr:hover td.controls a.delete {
+  visibility: visible;
+}
+.mp_editable_property_list tr td.controls a.ok,
+.user_defined_property_list tr td.controls a.ok {
+  height: 12px;
+  width: 13px;
+  background: url(/site_media/images/ui/white-edit-delete.png);
+  margin-right: 6px;
+  background-position: 0px 0px;
+}
+.mp_editable_property_list tr td.controls a.ok:hover,
+.user_defined_property_list tr td.controls a.ok:hover {
+  background-position: 0px -12px;
+}
+.mp_editable_property_list tr td.controls a.cancel,
+.user_defined_property_list tr td.controls a.cancel {
+  height: 12px;
+  width: 13px;
+  background: url(/site_media/images/ui/white-edit-delete.png);
+  background-position: -13px 0px;
+}
+.mp_editable_property_list tr td.controls a.cancel:hover,
+.user_defined_property_list tr td.controls a.cancel:hover {
+  background-position: -13px -12px;
+}
+.mp_editable_property_list tr td input[type="text"],
+.user_defined_property_list tr td input[type="text"],
+.mp_editable_property_list tr td input[type="text"]:focus,
+.user_defined_property_list tr td input[type="text"]:focus,
+.mp_editable_property_list tr td input[type="text"].focus,
+.user_defined_property_list tr td input[type="text"].focus {
+  padding: 6px;
+  color: #9092A4;
+  width: 100%;
+  min-height: 22px;
+}
+.mp_editable_property_list tr td input[type="text"][disabled],
+.user_defined_property_list tr td input[type="text"][disabled],
+.mp_editable_property_list tr td input[type="text"]:focus[disabled],
+.user_defined_property_list tr td input[type="text"]:focus[disabled],
+.mp_editable_property_list tr td input[type="text"].focus[disabled],
+.user_defined_property_list tr td input[type="text"].focus[disabled] {
+  box-shadow: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0 0 0 -1px;
+  outline: none;
+  font: inherit;
+  color: #fff;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.mp_editable_property_list tr td input:disabled,
+.user_defined_property_list tr td input:disabled {
+  color: #524E58;
+  text-overflow: ellipsis;
+}
+.mp_editable_property_list tr td.error,
+.user_defined_property_list tr td.error {
+  background: #ffe5e5;
+}
+.mp_editable_property_list tr a.edit .tooltip,
+.user_defined_property_list tr a.edit .tooltip {
+  width: 52px;
+  margin-left: -26px;
+}
+.mp_editable_property_list tr a.delete .tooltip,
+.user_defined_property_list tr a.delete .tooltip {
+  width: 64px;
+  margin-left: -32px;
+}
+.mp_editable_property_list tr a.cancel .tooltip,
+.user_defined_property_list tr a.cancel .tooltip {
+  width: 68px;
+  margin-left: -34px;
+}
+.mp_editable_property_list tr a.ok .tooltip,
+.user_defined_property_list tr a.ok .tooltip {
+  width: 52px;
+  margin-left: -26px;
+  overflow: visible;
+}
+.mp_editable_property_list tr .tooltip,
+.user_defined_property_list tr .tooltip {
+  display: none;
+  opacity: 0.85;
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  z-index: 1;
+}
+.mp_editable_property_list tr .tooltip .pointer,
+.user_defined_property_list tr .tooltip .pointer {
+  width: 0px;
+  height: 0px;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-top: 7px solid #050f1f;
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  margin-left: -7px;
+}
+.mp_editable_property_list tr .tooltip .body,
+.user_defined_property_list tr .tooltip .body {
+  font-family: proxima-nova, sans-serif;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 13px;
+  color: #fff;
+  background-color: #050f1f;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+}

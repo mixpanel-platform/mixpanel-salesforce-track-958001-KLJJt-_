@@ -1,0 +1,250 @@
+.left_column {
+  width: 570px;
+  display: table-cell;
+  vertical-align: top;
+  border-right: 1px solid #c0c9d4;
+  background-color: #f5f6f8;
+}
+.left_column #no_integrated_container {
+  display: none;
+  height: 530px;
+}
+.left_column #no_integrated_container img {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  position: absolute;
+}
+.left_column #no_integrated_container .message {
+  width: 500px;
+  top: 100px;
+}
+.left_column #no_integrated_container .message .message_text_container:not(.full_width) {
+  width: 250px;
+}
+.left_column #no_integrated_container .message .button_primary {
+  right: 20px;
+}
+.left_column #no_data_container {
+  display: none;
+  padding-top: 60px;
+  text-align: center;
+  font-family: 'helvetica neue', helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8a92a5;
+  margin: 0;
+}
+.left_column #no_data_container h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #68728a;
+  margin-bottom: 8px;
+}
+.left_column .stream_container .property_cell {
+  width: 252px;
+}
+.right_column {
+  height: 422px;
+  display: table-cell;
+  vertical-align: top;
+  background-color: #dbdee8;
+}
+.right_column .floating_cell {
+  min-height: 533px;
+  margin: 18px;
+  border: 1px solid #c0c3d2;
+  border-top: 0;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.right_column .top_cap {
+  height: 5px;
+}
+.right_column .header {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #abb4c6;
+}
+.right_column .header .header_body {
+  padding: 12px 0 12px 18px;
+  box-shadow: inset 0 1px #fff;
+}
+.right_column .header:not(.selected) {
+  background-color: #f3f5f9;
+  background-image: linear-gradient(#f7f9fd, #eceef3);
+  border-bottom: 1px solid #bfcdd7;
+}
+.right_column .header .top_cap {
+  background-color: #afb9d1;
+  background-image: linear-gradient(#b3bdd3, #a9b4cd);
+  border-bottom: 1px solid #92a0c0;
+}
+.right_column .header.selected {
+  border-bottom: 0 solid #bfcdd7;
+  color: #747d92;
+}
+.right_column .header.selected .header_body {
+  background-color: #fff;
+}
+.right_column .header.selected .top_cap {
+  background-color: #8fbbf1;
+  background-image: linear-gradient(#93bef2, #89b6f0);
+  border-bottom: 1px solid #7aaaee;
+}
+.right_column .header.props {
+  width: 190px;
+  position: relative;
+  border-radius: 3px 0 0 0;
+  cursor: pointer;
+}
+.right_column .header.props .top_cap {
+  border-radius: 3px 0 0 0;
+  border-right: 1px solid #7c98a9;
+}
+.right_column .header.props .header_body {
+  border-right: 1px solid #cdd5de;
+}
+.right_column .header.props .add_new_property {
+  position: absolute;
+  cursor: pointer;
+  right: 11px;
+  top: 17px;
+  padding: 4px;
+  border: 1px solid #bdbdce;
+  border-radius: 3px;
+  background-color: transparent;
+  box-shadow: 0 1px #fff, inset 0 1px #fff;
+}
+.right_column .header.props .add_new_property .icon {
+  margin: 0;
+  background-image: url(/site_media/images/ui/tinyblueplus.png);
+  background-position: -8px 0;
+  width: 8px;
+  height: 8px;
+}
+.right_column .header.props.selected .add_new_property {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.73), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.right_column .header.props.selected .add_new_property:active {
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.right_column .header.props.selected .add_new_property .icon {
+  background-image: url(/site_media/images/ui/tinyblueplus.png);
+  background-position: 0 0;
+}
+.right_column .header.msgs {
+  width: 182px;
+  position: relative;
+  border-radius: 0 3px 0 0;
+  cursor: pointer;
+}
+.right_column .header.msgs .top_cap {
+  border-radius: 0 3px 0 0;
+}
+.right_column .header.msgs .message_count {
+  display: block;
+  position: absolute;
+  right: 11px;
+  top: 17px;
+  padding: 5px 7px 4px 7px;
+  line-height: 11px;
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  text-shadow: none;
+  background-color: #a7adba;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 1px 0 #9ba2b0;
+}
+.right_column .header.msgs.selected .message_count {
+  box-shadow: inset 0 2px 1px 0 #648dd7;
+  background-color: #77a2de;
+}
+.right_column .user_properties table td.value .value_contents div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.right_column .user_properties table tr:last-of-type {
+  border-radius: 0 0 5px 5px;
+}
+.right_column .user_properties table tr:last-of-type td:first-child {
+  border-radius: 0 0 0 5px;
+}
+.right_column .user_properties table tr:last-of-type td:last-child {
+  border-radius: 0 0 5px 0;
+}
+.right_column .user_messages *:last-child,
+.right_column .user_messages .msg:last-child {
+  border-radius: 0 0 5px 5px;
+  border-bottom: 0;
+}
+.right_column .user_messages .msg {
+  position: relative;
+  padding: 17px 24px;
+  border-bottom: 1px solid #c6c6d1;
+  background: #fff;
+}
+.right_column .user_messages .msg .type {
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-top: 1px;
+}
+.right_column .user_messages .msg .type.email {
+  background-image: url(/site_media/images/reports/customers/message_type.png);
+  background-position: 0 0;
+}
+.right_column .user_messages .msg .type.push {
+  background-image: url(/site_media/images/reports/customers/message_type.png);
+  background-position: 0 -16px;
+}
+.right_column .user_messages .msg .subject {
+  float: left;
+  color: #77a2de;
+  font-size: 13px;
+  font-weight: bold;
+  max-width: 220px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.right_column .user_messages .msg .date {
+  float: right;
+  margin-top: 2px;
+  font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #9ab2bf;
+}
+.right_column .user_messages .msg .body {
+  margin-top: 5px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #69717e;
+}
+#text_length_determiner {
+  font-family: proxima-nova, sans-serif;
+  font-size: 13px;
+}
+.explore_user .error {
+  text-align: center;
+  padding: 200px;
+  color: #68728a;
+}
+.explore_user .error img {
+  width: 160px;
+  height: 140px;
+}
+.explore_user .error h2 {
+  font-size: 16px;
+  margin-top: 24px;
+}
+.explore_user .error p {
+  margin: 2px 0;
+}
