@@ -50,16 +50,28 @@
     
 
     <script>
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                    results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            debugger
-            return decodeURIComponent(results[2]);
-        }
+        function getQueryParam(param, url) {
+              if (!url) url = window.location.href
+              param = param.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+              var regexS = "[\\?&]" + param + "=([^&#]*)",
+                  regex = new RegExp( regexS ),
+                  results = regex.exec(url);
+              if (results === null || (results && typeof(results[1]) !== 'string' && results[1].length)) {
+                  return '';
+              } else {
+                  return decodeURIComponent(results[1]).replace(/\+/g, ' ');
+              }
+          };
+        // function getParameterByName(name, url) {
+        //     if (!url) url = window.location.href;
+        //     name = name.replace(/[\[\]]/g, "\\$&");
+        //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        //             results = regex.exec(url);
+        //     if (!results) return null;
+        //     if (!results[2]) return '';
+        //     debugger
+        //     return decodeURIComponent(results[2]);
+        // }
 
         _.namespace("mp.report.globals", function() {
             return {
@@ -67,8 +79,8 @@
             }
         });
 
-        var field = getParameterByName("field");
-        var value = getParameterByName("value");
+        var field = getQueryParam("field");
+        var value = getQueryParam("value");
 
         /* Validation to check if email is blank. If blank, display "no user record found" */
         if(value.trim() == ""){
