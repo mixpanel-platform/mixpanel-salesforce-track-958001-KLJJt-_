@@ -62,17 +62,6 @@
                   return decodeURIComponent(results[1]).replace(/\+/g, ' ');
               }
           };
-        // function getParameterByName(name, url) {
-        //     if (!url) url = window.location.href;
-        //     name = name.replace(/[\[\]]/g, "\\$&");
-        //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        //             results = regex.exec(url);
-        //     if (!results) return null;
-        //     if (!results[2]) return '';
-        //     debugger
-        //     return decodeURIComponent(results[2]);
-        // }
-
         _.namespace("mp.report.globals", function() {
             return {
                 utc_offset: -1 * new Date().getTimezoneOffset()
