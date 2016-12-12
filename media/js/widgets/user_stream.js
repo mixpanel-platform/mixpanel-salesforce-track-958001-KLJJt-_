@@ -72,7 +72,7 @@ _.namespace("mp.engage.widgets", function() {
     };
 
     UserStream.prototype._query_more = function() {
-        var from_date = this.to_date.clone().add(-90).days();
+        var from_date = this.to_date.clone().add(-60).days();
         var limit = 1000;
         var params = {
             'to_date': this.to_date.toString('yyyy-MM-dd'),
